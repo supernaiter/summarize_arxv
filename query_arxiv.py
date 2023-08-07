@@ -10,8 +10,10 @@ import xmltodict
 import dicttoxml
 import json
 
-#OpenAIのapiキー
-openai.api_key = 'your openai key'
+import os
+
+with open(os.path.expanduser("~/.openai_api.txt"), "r") as f:
+    openai.api_key = f.read().strip()
 
 prompt = """与えられた論文の要点をまとめ、以下の項目で日本語で出力せよ。それぞれの項目は最大でも180文字以内に要約せよ。
 ```
